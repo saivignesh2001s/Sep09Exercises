@@ -5,15 +5,11 @@ namespace Sep09Exercises
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Without using thread start");
+            
             Thread t1 = new Thread(Ma);
-            
             t1.Start();
-
-            
-            Console.WriteLine("using parameterised thread start");
-            Thread t3 = new Thread(new ThreadStart(Ma));
-            t3.Start();
+            Thread t3 = new Thread(Man);
+            t3.Start("Hello");
             Console.ReadLine();
         }
         public static void Ma()
@@ -26,6 +22,10 @@ namespace Sep09Exercises
                     Thread.Sleep(1000);
                 }
             }
+        }
+        public static void Man(object data)
+        {
+            Console.WriteLine("Parameterised thread start" +" "+data);
         }
     }
 }
